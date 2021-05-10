@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1= title
+    div(class='login-div')
+        div
+            img(src="/logo3.png" class="logo-login")
+        form(action='/users/login' class='login-form' method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div
+                label(class='labels') Username or Email:
+                input(type='text' name='userName' class="login-field" userName)
+            div
+                label(class='labels') Password:
+                input(type='password' name='password' class="login-field" password)
+            div(class='errors-div')
+                if errors
+                    div(class='alert alert-danger' role='alert')
+                        p The following error(s) occurred:
+                        ul
+                            each error in errors
+                                li(class="alert-danger li-margin-class")= error
+            div
+                button(type='submit' class="blue-button login-button") Log In
+            div
+                p: a(href='/users/signup' class='labels') Don't Have An Account?

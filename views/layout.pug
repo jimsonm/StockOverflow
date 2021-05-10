@@ -1,0 +1,114 @@
+doctype html
+html
+  head
+      block head
+        title="Stock Overflow"
+        link(rel="icon" type="image/png" href="/favicon.png")
+        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/nav-bar.css')
+        script(type="text/javascript" src="/javascripts/nav-bar.js")
+        //- script(type="text/javascript" src="/javascripts/delete-acc.js")
+        link(rel='stylesheet' href='/stylesheets/login.css')
+        link(rel='stylesheet' href='/stylesheets/left-nav-bar.css')
+        link(rel='stylesheet' href='/stylesheets/question-ask.css')
+        link(rel='stylesheet' href='/stylesheets/questions.css')
+        link(rel='stylesheet' href='/stylesheets/footer.css')
+        link(rel='stylesheet' href='/stylesheets/tags.css')
+
+  body
+    .header-nav
+      .logo-container
+        a(href="/")
+          img(class="logo-sm" src="/logo3.png")
+          img(class="logo" src="/logo2.svg")
+      .search-bar
+          form(method="get" action="/search")
+            span(id="search-icon") 🔎
+            input(class="search-bar-field" placeholder="Search..." name="q" type="text")
+            button(class="hidden-submit search-submit" type="submit")
+      if locals.authenticated
+        .right-buttons
+          div(class='username-display')
+            span(class="welcome-user") Welcome #{user.userName}
+          form(action='/users/logout' method='post')
+            button(class='light-blue-button' type='submit') Logout
+          a(href="/users/settings" class='settings-img')
+            img(src="/settings.png" class='settings-img')
+      else
+        .right-buttons
+          a(id="login-button" href="/users/login" class="light-blue-button") Log In
+          a(id="demo-user-button" class="light-blue-button") Demo User
+          a(id="signup-button" href="/users/signup" class="blue-button") Sign Up
+    .body-container
+      .left-navbar
+        ol(class='left-nav-links')
+          li(class='left-navbar-li hoverable')
+            a(class='li-link' href='/') Home
+          li(class='left-navbar-li') PUBLIC
+            ol(class='left-nav-public')
+              li(class='left-navbar-li hoverable')
+                a(class='li-link' href='/questions') Questions
+              li(class='left-navbar-li hoverable')
+                a(class='li-link' href='/tags') Tags
+
+      .body-content
+        block content
+    block footer
+      div(class="footer-container")
+          .footer-1
+              a(href="/")
+                  img(class="footer-logo" src="/logo3.png")
+          .footer-2
+              h1(class="footer-column-title") stock overflow
+              ul(class="li-plain no-padding")
+                  li
+                      a(class="footer-column-text footer-link" href="/questions") Questions
+                  li
+                      a(class="footer-column-text footer-link" href="/users/login") Log In
+                  li
+                      a(class="footer-column-text footer-link" href="/users/signup") Create an Account
+          .footer-3
+              h1(class="footer-column-title") something
+              ul(class="li-plain no-padding")
+                  li
+                      a(class="footer-column-text footer-link" href="") Random Link
+          .footer-4
+              h1(class="footer-column-title") something
+              ul(class="li-plain no-padding")
+                  li
+                      a(class="footer-column-text footer-link" href="") Random Link
+          .footer-5
+              h1(class="footer-column-title") Our Network
+              ul(class="li-plain no-padding")
+                  li
+                      a(class="footer-column-text footer-link" href="https://stackoverflow.com/questions") Stack Overflow
+          .footer-6
+              h1(class="footer-column-title") Our Team
+              div(class="team-box")
+                  ul(class="li-plain no-padding")
+                      li(class="footer-column-text") Jordyn Sechrist
+                          div(class="social-stuff")
+                              a(href="YOUR GITHUB LINK HERE")
+                                  img(class="social-logo" src="/githublogo.png")
+                              a(href="YOUR LINKEDIN LINK HERE")
+                                  img(class="social-logo" src="/linkedinlogo.png")
+                      li(class="footer-column-text") Viktorija Tarane
+                          div(class="social-stuff")
+                              a(href="YOUR GITHUB LINK HERE")
+                                  img(class="social-logo" src="/githublogo.png")
+                              a(href="YOUR LINKEDIN LINK HERE")
+                                  img(class="social-logo" src="/linkedinlogo.png")
+                      li(class="footer-column-text") Jimson Ma
+                          div(class="social-stuff")
+                              a(href="YOUR GITHUB LINK HERE")
+                                  img(class="social-logo" src="/githublogo.png")
+                              a(href="YOUR LINKEDIN LINK HERE")
+                                  img(class="social-logo" src="/linkedinlogo.png")
+                      li(class="footer-column-text") Andrew Loeffler
+                          div(class="social-stuff")
+                              a(href="https://github.com/a-loeffler")
+                                  img(class="social-logo" src="/githublogo.png")
+                              a(href="YOUR LINKEDIN LINK HERE")
+                                  img(class="social-logo" src="/linkedinlogo.png")
+              div(class="align-bottom legal-stuff")
+                  p(class="footer-column-text small-text align-bottom") site design / logo © 2021 Stock Overflow LLC; user contributions <br> courtesy of App Academy
